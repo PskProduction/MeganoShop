@@ -73,22 +73,21 @@ class SetUpClass(TestCase):
             name="kuhonnyj-tehnik",
             slug="kuhonnyj-tehnik",
             available=True,
-            image='megano/media/products/image_apple-airpods-pro-2/20221007121024884_11.jpg',
+            image="megano/media/products/image_apple-airpods-pro-2/20221007121024884_11.jpg",
         )
         self.product2 = Product.objects.create(
             category=self.category2,
             name="naushnik",
             available=True,
             slug="naushnik",
-            image='megano/media/products/image_apple-airpods-pro-2/20221007121024884_11.jpg',
-
+            image="megano/media/products/image_apple-airpods-pro-2/20221007121024884_11.jpg",
         )
         self.product3 = Product.objects.create(
             category=self.category3,
             name="mikrovolnovaya-pech",
             slug="mikrovolnovaya-pech",
             available=True,
-            image='megano/media/products/image_apple-airpods-pro-2/20221007121024884_11.jpg',
+            image="megano/media/products/image_apple-airpods-pro-2/20221007121024884_11.jpg",
         )
         self.product4 = Product.objects.create(
             category=self.category4, name="mobilnyj-telefon", slug="mobilnyj-telefon", available=True

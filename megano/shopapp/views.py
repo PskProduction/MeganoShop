@@ -8,28 +8,21 @@ from django.contrib import messages
 from django.core.cache import cache
 from django.core.paginator import Paginator
 from django.db.models import Min
-from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.views import View
 from django.views.generic import TemplateView
 from histviewapp.services.history import HistoryService
-
-from .forms import AddToCartForm, FileImportForm, ProductReviewForm
-from .models import (
-    Discount,
-    Product,
-    ProductFeature,
-    ProductReview,
-    ProductSeller,
-    Seller,
-)
-from .services.compared_products import ComparedProductsService
-from .services.discount import DiscountService
-from .services.limited_edition_and_limited_offer import (
+from shopapp.utils.limited_edition_and_limited_offer import (
     get_daily_offer,
     get_limited_edition_products,
 )
+
+from .forms import AddToCartForm, FileImportForm, ProductReviewForm
+from .models import Discount, Product, ProductReview, ProductSeller, Seller
+from .services.compared_products import ComparedProductsService
+from .services.discount import DiscountService
 from .services.product_review import ProductReviewService
 from .services.recently_viewed import RecentlyViewedService
 from .tasks import import_json
@@ -96,7 +89,7 @@ class ProductDetailView(View):
     Представление для отображения детальной информации о продукте.
     """
 
-    template_name = "product_detail.jinja2"
+    template_name = "shopapp/product_detail.jinja2"
     model = Product
 
     review_service = ProductReviewService()
@@ -217,6 +210,8 @@ class ProductDetailView(View):
 
 
 def catalog_list(request: HttpRequest):
+    template_name = "shopapp/catalog.jinja2"
+
     if not cache.get("top_tags"):  # популярные теги
         top_tags = Product.tags.most_common()[:5]
         cache.set("top_tags", top_tags, 300)
@@ -304,7 +299,7 @@ def catalog_list(request: HttpRequest):
             "top_tags": top_tags,
         }
 
-    return render(request, "catalog.jinja2", context=context)
+    return render(request, template_name, context=context)
 
 
 class AddToComparison(View):
@@ -334,7 +329,7 @@ class ComparisonOfProducts(View):
     Вывести список сравниваемых товаров
     """
 
-    temlate_name = "shopapp/comparison.jinja2"
+    template_name = "shopapp/comparison.jinja2"
 
     def get(self, request):
         compare_list = ComparedProductsService(request)
@@ -425,7 +420,7 @@ class ClearComparison(View):
 
 
 class DiscountList(View):
-    template_name = "discounts.jinja2"
+    template_name = "shopapp/discounts.jinja2"
     model = Discount
 
     def get(self, request):

@@ -7,12 +7,16 @@
                     </strong>
                 </header>
                 {% if limited_offer %}
-                    <div class="Card"><a class="Card-picture"
-                                         href="{{ url('shopapp:product_detail', product_slug=limited_offer.product.slug) }}"><img
-                            src="{{ limited_offer.product.image.url }}" alt="{{ limited_offer.product.name }}"></a>
+                    <div class="Card">
+                        <a class="Card-picture"
+                           href="{{ url('shopapp:product_detail', product_slug=limited_offer.product.slug) }}">
+                            <img src="{{ limited_offer.product.image.url }}" alt="{{ limited_offer.product.name }}">
+                        </a>
                         <div class="Card-content">
-                            <strong class="Card-title"><a
-                                    href="{{ url('shopapp:product_detail', product_slug=limited_offer.product.slug) }}">{{ limited_offer.product.name }}</a>
+                            <strong class="Card-title">
+                                <a href="{{ url('shopapp:product_detail', product_slug=limited_offer.product.slug) }}">
+                                    {{ limited_offer.product.name }}
+                                </a>
                             </strong>
                             <div class="Card-description">
                                 <div class="Card-cost"><span

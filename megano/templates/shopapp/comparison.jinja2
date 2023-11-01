@@ -12,9 +12,17 @@
                     {% if compare_list|length > 1 %}
                         <div class="ProductCard-cart" style="padding: 0 0 37px 0">
                             <div class="ProductCard-cartElement">
-                                <a class="btn btn_primary" href="{% if only_differences %}{{ url('shopapp:compare_list') }}{% else %}{{ url('shopapp:compare_list') }}?only_differences=1{% endif %}">
-                                    <img class="btn-icon" src="{{ static('assets/img/icons/card/compare.svg') }}" alt="cart_white.svg"/>
-                                    <span class="btn-content">{% if only_differences %}Показать все характеристики{% else %}Показать только различающиеся характеристики{% endif %}</span>
+                                <a class="btn btn_primary" href="
+                                        {% if only_differences %}{{ url('shopapp:compare_list') }}{% else %}{{ url('shopapp:compare_list') }}?only_differences=1{% endif %}">
+                                    <img class="btn-icon" src="{{ static('assets/img/icons/card/compare.svg') }}"
+                                         alt="cart_white.svg"/>
+                                    <span class="btn-content">
+                                        {% if only_differences %}
+                                            Показать все характеристики
+                                        {% else %}
+                                            Показать только различающиеся характеристики
+                                        {% endif %}
+                                    </span>
                                 </a>
                             </div>
                         </div>
@@ -43,7 +51,14 @@
                                                                 <th class="hed">Значение</th>
                                                             </tr>
                                                             <tr>
-                                                                <td class="comparis" colspan="2"><b>{% if only_differences %}Только различающиеся характеристики{% else %}Все характеристики{% endif %}</b></td>
+                                                                <td class="comparis" colspan="2">
+                                                                    <b>
+                                                                        {% if only_differences %}
+                                                                            Только различающиеся характеристики
+                                                                        {% else %}Все характеристики
+                                                                        {% endif %}
+                                                                    </b>
+                                                                </td>
                                                             </tr>
 
                                                             {% for feature in product.features %}
@@ -72,7 +87,9 @@
                                 </div>
                                 <div class="ProductCard-cart">
                                     <div class="ProductCard-cartElement">
-                                        <a class="btn btn_primary" href="{{ url('cart_and_orders:add_to_cart', product.id) }}">
+                                        <a class="btn btn_primary"
+                                           href="{{ url('cart_and_orders:add_to_cart', product.id) }}"
+                                        >
                                             <img class="btn-icon"
                                                  src="{{ static('assets/img/icons/card/cart_white.svg') }}"
                                                  alt="cart_white.svg"/>
@@ -108,5 +125,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

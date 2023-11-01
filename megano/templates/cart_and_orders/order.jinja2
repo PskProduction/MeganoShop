@@ -98,8 +98,10 @@
                                                    type="password" placeholder="Введите пароль повторно"
                                                    data-validate="require">
                                         </div>
-                                        <div class="form-group"><a class="btn btn_muted Order-btnReg" href="{{ url('accountapp:login') }}">Я уже
-                                            зарегистрирован</a>
+                                        <div class="form-group">
+                                            <a class="btn btn_muted Order-btnReg" href="{{ url('accountapp:login') }}">
+                                                Я уже зарегистрирован
+                                            </a>
                                         </div>
                                     </div>
                                 {% endif %}
@@ -113,7 +115,7 @@
                                 </h2>
                             </header>
                             <div class="form-group">
-                                 <fieldset>
+                                <fieldset>
                                     <legend>{{ form.delivery.label }}</legend>
                                     {% for radio in form.delivery %}
                                         <div class="radio">
@@ -130,7 +132,8 @@
                             <div class="form-group">
                                 <label class="form-label" for="address">Адрес
                                 </label>
-                                <textarea class="form-textarea" name="address" id="address" data-validate="require"></textarea>
+                                <textarea class="form-textarea" name="address" id="address"
+                                          data-validate="require"></textarea>
                             </div>
                             <div class="Order-footer"><a class="btn btn_success Order-next" href="#step3">Дальше</a>
                             </div>

@@ -2,7 +2,7 @@
 
 <script src="{{ static('assets/js/scripts.js') }}"></script>
 {% block title %}
-	Подтверждение заказа
+    Подтверждение заказа
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
                                 <div class="Order-info">
                                     <div class="Order-infoType">ФИО:
                                     </div>
-                                    <div class="Order-infoContent" id="nameContent" >
+                                    <div class="Order-infoContent" id="nameContent">
                                         {{ order.user.name }}
                                     </div>
                                 </div>
@@ -78,13 +78,17 @@
                         {% for item in order_products %}
                             <div class="Cart-product">
                                 <div class="Cart-block Cart-block_row">
-                                    <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="{{ url( 'shopapp:product_detail', item.product.slug) }}"><img
-                                            class="Cart-img" src="{{ item.product.image.url }}"
-                                            alt="card.jpg"></a>
+                                    <div class="Cart-block Cart-block_pict">
+                                        <a class="Cart-pict"
+                                           href="{{ url( 'shopapp:product_detail', item.product.slug) }}">
+                                            <img class="Cart-img" src="{{ item.product.image.url }}" alt="card.jpg">
+                                        </a>
                                     </div>
                                     <div class="Cart-block Cart-block_info">
-                                        <a class="Cart-title" href="{{ url( 'shopapp:product_detail', item.product.slug) }}">
-                                            {{ item.product.name }}</a>
+                                        <a class="Cart-title"
+                                           href="{{ url( 'shopapp:product_detail', item.product.slug) }}">
+                                            {{ item.product.name }}
+                                        </a>
                                         <div class="Cart-desc">
                                             {% if item.product.description|length > 200 %}
                                                 {{ item.product.description[:200] }}...
@@ -109,19 +113,20 @@
                         {% endfor %}
                         <div class="Cart-total">
                             <div class="Cart-block Cart-block_total">
-                            {% if price_with_discount %}
-                                <strong class="Cart-title">Итого со скидкой:</strong>
-                                <span class="Cart-price" style="color: #3cb878">{{ order_price }}$</span>
-                            {% else %}
-                                <strong class="Cart-title">Итого :</strong>
-                                <span class="Cart-price">{{ order_price }}$</span>
-                            {% endif %}
+                                {% if price_with_discount %}
+                                    <strong class="Cart-title">Итого со скидкой:</strong>
+                                    <span class="Cart-price" style="color: #3cb878">{{ order_price }}$</span>
+                                {% else %}
+                                    <strong class="Cart-title">Итого :</strong>
+                                    <span class="Cart-price">{{ order_price }}$</span>
+                                {% endif %}
                             </div>
                             <div class="Cart-block">
                                 {% if order.payment_method == 'online' %}
                                     <a class="btn btn_primary" href="{{ url('paymentapp:payment') }}">Оплатить</a>
                                 {% else %}
-                                    <a class="btn btn_primary" href="{{ url('paymentapp:payment_someone') }}">Оплатить</a>
+                                    <a class="btn btn_primary"
+                                       href="{{ url('paymentapp:payment_someone') }}">Оплатить</a>
                                 {% endif %}
                             </div>
                         </div>

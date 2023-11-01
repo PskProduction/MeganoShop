@@ -11,11 +11,11 @@
                     <div class="ProductCard">
                         <div class="ProductCard-look">
                             <div class="ProductCard-photo">
-                                <img src="{{ seller.image.url }}" alt="{{ seller.name }}" />
+                                <img src="{{ seller.image.url }}" alt="{{ seller.name }}"/>
                             </div>
                             <div class="ProductCard-picts">
-                                <a class="ProductCard-pict ProductCard-pict_ACTIVE" href="{{ seller.image.url }}" >
-                                    <img src="{{ seller.image.url }}" alt="{{ seller.name }}" />
+                                <a class="ProductCard-pict ProductCard-pict_ACTIVE" href="{{ seller.image.url }}">
+                                    <img src="{{ seller.image.url }}" alt="{{ seller.name }}"/>
                                 </a>
                             </div>
                         </div>
@@ -62,61 +62,67 @@
                                             {% set seller_product = item[0] %}
                                             {% set price = item[1] %}
                                             {% set total_quantity = item[2] %}
-                                                <div class="Order Order_anons">
-                                                        <div class="Order-personal">
-                                                            <div class="row">
-                                                                <div class="row-block">
-                                                                    <a class="Order-title" href="{{ url( 'shopapp:product_detail', seller_product.product.slug) }}">
-                                                                        {{ seller_product.product.name }}
-                                                                    </a>
-                                                                    <div>
-                                                                        <a href="{{ url( 'shopapp:product_detail', seller_product.product.slug) }}">
-                                                                            <img src="{{ seller_product.product.image.url }}" alt="{{ seller_product.product.name }}"
-                                                                                 style="max-height: 200px;
+                                            <div class="Order Order_anons">
+                                                <div class="Order-personal">
+                                                    <div class="row">
+                                                        <div class="row-block">
+                                                            <a class="Order-title"
+                                                               href="{{ url( 'shopapp:product_detail', seller_product.product.slug) }}">
+                                                                {{ seller_product.product.name }}
+                                                            </a>
+                                                            <div>
+                                                                <a href="{{ url( 'shopapp:product_detail', seller_product.product.slug) }}">
+                                                                    <img src="{{ seller_product.product.image.url }}"
+                                                                         alt="{{ seller_product.product.name }}"
+                                                                         style="max-height: 200px;
                                                                                  max-width: 200px;
                                                                                  margin: 10px;
                                                                                  border: 1px solid #e0e0e0;
                                                                                  padding: 10px">
-                                                                        </a>
-                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row-block">
+                                                            <div class="Order-info Order-info_delivery">
+                                                                <div class="Order-infoType">Тип доставки:
                                                                 </div>
-                                                                <div class="row-block">
-                                                                    <div class="Order-info Order-info_delivery">
-                                                                        <div class="Order-infoType">Тип доставки:
-                                                                        </div>
-                                                                        <div class="Order-infoContent">Обычная доставка
-                                                                        </div>
+                                                                <div class="Order-infoContent">Обычная доставка
+                                                                </div>
+                                                            </div>
+                                                            <div class="Order-info Order-info_pay">
+                                                                <div class="Order-infoType">Оплата:
+                                                                </div>
+                                                                <div class="Order-infoContent">Онлайн картой
+                                                                </div>
+                                                            </div>
+                                                            <div class="Order-info">
+                                                                {% if seller_product.price != price %}
+                                                                    <div class="Order-infoType">Стоимость:
                                                                     </div>
-                                                                    <div class="Order-info Order-info_pay">
-                                                                        <div class="Order-infoType">Оплата:
-                                                                        </div>
-                                                                        <div class="Order-infoContent">Онлайн картой
-                                                                        </div>
+                                                                    <div class="Order-infoContent">
+                                                                        <s>{{ seller_product.price }} </s>
+                                                                        <span class="Order-price"
+                                                                              style="color: #3cb878"> {{ price }} $</span>
                                                                     </div>
-                                                                    <div class="Order-info">
-                                                                        {% if seller_product.price != price %}
-                                                                        <div class="Order-infoType">Стоимость:
-                                                                        </div>
-                                                                        <div class="Order-infoContent">
-                                                                            <s>{{ seller_product.price }} </s>
-                                                                            <span class="Order-price" style="color: #3cb878"> {{ price }} $</span>
-                                                                        </div>
-                                                                        {% else %}
-                                                                            <div class="Order-infoType">Стоимость:
-                                                                            </div>
-                                                                            <div class="Order-infoContent"><span class="Order-price">{{ price }} $</span>
-                                                                            </div>
-                                                                        {% endif %}
-                                                                    </div><div class="Order-info">
-                                                                        <div class="Order-infoType">В наличии
-                                                                        </div>
-                                                                        <div class="Order-infoContent"><span class="Order-price">{{ seller_product.quantity }} шт.</span>
-                                                                        </div>
+                                                                {% else %}
+                                                                    <div class="Order-infoType">Стоимость:
                                                                     </div>
+                                                                    <div class="Order-infoContent"><span
+                                                                            class="Order-price">{{ price }} $</span>
+                                                                    </div>
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="Order-info">
+                                                                <div class="Order-infoType">В наличии
+                                                                </div>
+                                                                <div class="Order-infoContent"><span
+                                                                        class="Order-price">{{ seller_product.quantity }} шт.</span>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
                                                 </div>
+                                            </div>
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -124,9 +130,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
+    </div>
 {% endblock %}

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="Middle Middle_top">
+    <div class="Middle Middle_top">
         <div class="Section Section_column Section_columnLeft">
             <div class="wrap">
                 {% set view_page = "account" %}
@@ -13,16 +13,18 @@
                 <div class="Section-content">
                     <div class="Account">
                         <div class="Account-group">
-                        {% if user.avatar %}
-                            <div class="Account-column">
-                                <div class="Account-avatar"
-                                style="background-image: url('{{ user.avatar.url }}'); background-repeat: no-repeat; background-position: center center; background-size: contain;">
+                            {% if user.avatar %}
+                                <div class="Account-column">
+                                    <div class="Account-avatar"
+                                         style="background-image: url('{{ user.avatar.url }}'); background-repeat: no-repeat; background-position: center center; background-size: contain;">
+                                    </div>
                                 </div>
-                            </div>
-                        {% endif %}
+                            {% endif %}
                             <div class="Account-column">
-                                <div class="Account-name">{{user.name}}
-                                </div><a class="Account-editLink" href="{{ url('profileapp:profile') }}">Редактировать профиль</a>
+                                <div class="Account-name">{{ user.name }}</div>
+                                <a class="Account-editLink" href="{{ url('profileapp:profile') }}">
+                                    Редактировать профиль
+                                </a>
                             </div>
                         </div>
                         <div class="Account-group">

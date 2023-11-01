@@ -25,3 +25,15 @@ def reset_cart_cache(request):
     except Exception as e:
         messages.error(request, "При сбросе кэша произошла ошибка", str(e))
     return redirect(request.META.get("HTTP_REFERER"))
+
+
+def reset_catalog_cache(request):
+    # сброс кэша каталога
+    try:
+        cache.delete("top_products")
+        messages.success(request, "Кэш каталога успешно сброшен")
+    except KeyError:
+        messages.error(request, "Такой ключ не найден")
+    except Exception as e:
+        messages.error(request, "При сбросе кэша произошла ошибка", str(e))
+    return redirect(request.META.get("HTTP_REFERER"))

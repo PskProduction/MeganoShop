@@ -10,11 +10,7 @@ from shopapp.services.discount import DiscountService
 from .forms import OrderForm
 from .models import DeliveryMethod, Order, OrderProduct
 from .services.cart import CartService
-from .utils.get_total_price import (
-    get_total_delivery_price,
-    get_total_price,
-    get_total_price_with_discount,
-)
+from .utils.get_total_price import get_total_delivery_price, get_total_price
 
 
 class CartView(View):

@@ -11,8 +11,7 @@ def get_cached_top_products():
 
     # Если данные кэша отсутствуют, выполнить запрос к БД
     if cached_top_products is None:
-        # Получение топ-товаров, сначала по количеству просмотров, затем по количеству покупок
-        top_products = ProductSeller.objects.all()[:8]
+        top_products = ProductSeller.objects.order_by("-quantity")[:8]
 
         # Кэширование данных на указанное время
         cache_timeout = getattr(settings, "TOP_PRODUCTS_CACHE_TIMEOUT")

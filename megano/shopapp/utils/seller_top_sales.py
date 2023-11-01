@@ -1,9 +1,8 @@
 import random
 
-from cart_and_orders.models import Order, OrderProduct
-from django.db.models import Case, F, IntegerField, Sum, Value, When
-from django.db.models.functions import Coalesce
-from shopapp.models import Product, ProductSeller
+from cart_and_orders.models import OrderProduct
+from django.db.models import Sum
+from shopapp.models import ProductSeller
 
 
 def seller_top_sales(seller):

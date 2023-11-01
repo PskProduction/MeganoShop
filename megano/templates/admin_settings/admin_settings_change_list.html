@@ -8,7 +8,7 @@
         <form method="post">
             {% csrf_token %}
             <input value="Reset all cache" type="submit" formaction="{% url 'admin_settings:reset_all_cache' %}" style="margin-right: 10px;">
-            <input value="Reset catalog cache" type="button" onclick="#" style="margin-right: 10px;">
+            <input value="Reset catalog cache" type="submit" formaction="{% url 'admin_settings:reset_catalog_cache' %}" style="margin-right: 10px;">
             <input value="Reset cart cache" type="submit" formaction="{% url 'admin_settings:reset_cart_cache' %}" style="margin-right: 10px;">
             <input value="Reset orders cache" type="button" onclick="#" style="margin-right: 10px;">
             <input value="Reset compare cache" type="button" onclick="#" style="margin-right: 10px;">
